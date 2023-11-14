@@ -1,0 +1,100 @@
+import planetas.*
+
+describe "test sobre el escenario basico" {
+	const julieta = new Persona (edad=42)
+	const ana = new Atleta(edad=25)
+	const rosa = new Atleta(edad=45, tecnica=8)
+	const perla = new Atleta(edad=28, tecnica=4, masaMuscular=6)
+	const monica = new Docente(edad=45, cursos=6)
+	const luisa = new Docente(edad=35, cursos=1)
+	const triton = new Planeta (habitantes=[julieta, ana, rosa, perla, monica, luisa],museos=0)
+	
+	test "la potencia de julieta es 20" {
+		assert.equals(20,julieta.potencia())
+	}
+	test " no es destacada julieta " {
+		assert.notThat(julieta.esDestacado())
+	}
+	test "la inteligencia de julieta es 8 " {
+		assert.equals(8,julieta.inteligencia())
+	}
+	test "la potencia de ana es 28 " {
+		assert.equals(28,ana.potencia())
+	}
+	test "la inteligencia de ana es 12" {
+		assert.equals(12,ana.inteligencia())
+	}
+	test "es destacada ana " {
+		assert.that(ana.esDestacado())
+	}
+	
+	test "la potencia de rosa" {
+		assert.equals(52,rosa.potencia())
+	}
+
+	test "es destacada rosa" {
+		assert.that(rosa.esDestacado())
+	}
+	test "la inteligencia de rosa es 8" {
+		assert.equals(8,rosa.inteligencia())
+	}
+
+	test "la inteligencia de perla es 12" {
+		assert.equals(12,perla.inteligencia())
+	}
+	test "perla no es destacada" {
+		assert.notThat(perla.esDestacado())
+	}
+	test " la potencia de perla es 44 " {
+		assert.equals(44,perla.potencia())
+	}
+	
+	test "la potencia de monica es 20" {
+		assert.equals(20,monica.potencia())
+	}
+	
+	test "la inteligencia de monica es 20 " {
+		assert.equals(20,monica.inteligencia())
+	}
+	
+	test " es destacada monica " {
+		assert.that(monica.esDestacado())
+	}
+	
+	test "la potencia de luisa es 20 " {
+		assert.equals(20,luisa.potencia())
+	}
+	test "la inteligencia de luisa es 14" {
+		assert.equals(14,luisa.inteligencia())
+	}
+	
+	test "es destacada luisa" {
+		assert.notThat(luisa.esDestacado())
+	}
+	
+	test "delegacion diplomatica de triton "{
+		assert.equals(#{ana, rosa, monica}, triton.delegacionDiplomatica())
+	}
+	
+	test "No es culto triton" {
+		assert.notThat(triton.esCulto())
+	}
+	
+	test "la potencia real del planeta triton es 184" {
+		assert.equals(184,triton.potenciaReal())
+	}
+	
+	test "entrenamiento de Perla 1"{
+   	 perla.entrenar(15)
+   	 perla.aprenderUnaTecnica()
+   	 assert.equals(65, perla.potencia())
+   	 assert.notThat(perla.esDestacado())
+    }
+    
+    test "entrenamiento de perla 2"{
+   	 perla.aprenderUnaTecnica()
+   	 perla.aprenderUnaTecnica()
+   	 assert.that(perla.esDestacado())
+    }
+}
+   
